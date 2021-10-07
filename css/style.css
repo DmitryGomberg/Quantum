@@ -2167,10 +2167,6 @@ body {
   padding-bottom: 0;
 }
 
-.team {
-  padding-bottom: calc(40px + 60 * (100vw - 320px) / 1600);
-}
-
 .team__container {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
