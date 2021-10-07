@@ -143,6 +143,62 @@ class DynamicAdapt {
 
 const da = new DynamicAdapt("max");  
 da.init();;
+const swipedfbdfr = new Swiper('.registr-swiper', {
+   pagination: {
+      el: '.registr-pagination',
+      clickable: true
+   },
+   slidesToScroll: 1,
+   breakpoints: {
+      // when window width is >= 320px
+      320: {
+         slidesPerView: 1.25,
+         spaceBetween: 20,
+      },
+      488: {
+         slidesPerView: 2,
+         spaceBetween: 20,
+      },
+      // when window width is >= 480px
+      760: {
+         slidesPerView: 3,
+         spaceBetween: 20,
+      },
+      // when window width is >= 640px
+      1172: {
+         slidesPerView: 4,
+         spaceBetween: 30,
+      }
+   }
+});
+const swidvgdbvper = new Swiper('.cal-swiper', {
+   pagination: {
+      el: '.cal-pagination',
+      clickable: true
+   },
+   slidesToScroll: 1,
+   breakpoints: {
+      // when window width is >= 320px
+      320: {
+         slidesPerView: 1.25,
+         spaceBetween: 20,
+      },
+      488: {
+         slidesPerView: 2,
+         spaceBetween: 20,
+      },
+      // when window width is >= 480px
+      760: {
+         slidesPerView: 3,
+         spaceBetween: 20,
+      },
+      // when window width is >= 640px
+      1172: {
+         slidesPerView: 4,
+         spaceBetween: 30,
+      }
+   }
+});
 var body = document.body;
 const iconMenu = document.querySelector('.header__menu-open');
 if (iconMenu) {
@@ -153,7 +209,9 @@ if (iconMenu) {
       body.classList.toggle('lock');
    })
 }
-document.getElementsByClassName("tabcontent")[1].style.display = "none";
+if (document.getElementsByClassName("tabcontent")[1]) {
+   document.getElementsByClassName("tabcontent")[1].style.display = "none";
+}
 
 function openCity(evt, cityName) {
    // Declare all variables
@@ -176,7 +234,7 @@ function openCity(evt, cityName) {
    evt.currentTarget.className += " active";
 }
 
-const swiper = new Swiper('.services-swiper', {
+const swipeoyhgr = new Swiper('.services-swiper', {
 
    pagination: {
       el: '.services-pagination',
@@ -267,6 +325,34 @@ const swipgjher = new Swiper('.tur-swiper', {
       }
    }
 });
+const swipgjhепреer = new Swiper('.tur-swiper-2', {
+   pagination: {
+      el: '.tur-pagination',
+      clickable: true
+   },
+   slidesToScroll: 1,
+   breakpoints: {
+      // when window width is >= 320px
+      320: {
+         slidesPerView: 1.25,
+         spaceBetween: 20,
+      },
+      488: {
+         slidesPerView: 2,
+         spaceBetween: 20,
+      },
+      // when window width is >= 480px
+      760: {
+         slidesPerView: 3,
+         spaceBetween: 20,
+      },
+      // when window width is >= 640px
+      1172: {
+         slidesPerView: 4,
+         spaceBetween: 30,
+      }
+   }
+});
 const swipdfgjher = new Swiper('.spons-swiper', {
    navigation: {
       nextEl: ".spons-next",
@@ -299,6 +385,9 @@ const swipdfgjher = new Swiper('.spons-swiper', {
       }
    }
 });
+
 if (window.innerWidth < 600) {
    document.querySelector(".tur__top-link").innerHTML = "Все";
-}
+   document.querySelector(".tur__top-link-2").innerHTML = "Все";
+   document.querySelector(".tur__top-link-3").innerHTML = "Все";
+};
