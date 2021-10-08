@@ -387,7 +387,16 @@ const swipdfgjher = new Swiper('.spons-swiper', {
 });
 
 if (window.innerWidth < 600) {
-   document.querySelector(".tur__top-link").innerHTML = "Все";
-   document.querySelector(".tur__top-link-2").innerHTML = "Все";
-   document.querySelector(".tur__top-link-3").innerHTML = "Все";
+   if ( document.querySelector(".tur__top-link")){
+      document.querySelector(".tur__top-link").innerHTML = "Все";
+   }
+   if ( document.querySelector(".tur__top-link-2")){
+      document.querySelector(".tur__top-link-2").innerHTML = "Все";
+   }
+   if ( document.querySelector(".tur__top-link-3")){
+      document.querySelector(".tur__top-link-3").innerHTML = "Все";
+   }
+   if ( document.querySelector(".tur__top-link-4")){
+      document.querySelector(".tur__top-link-4").innerHTML = "Все";
+   }
 };
