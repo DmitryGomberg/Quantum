@@ -143,6 +143,45 @@ class DynamicAdapt {
 
 const da = new DynamicAdapt("max");  
 da.init();;
+const animItems = document.querySelectorAll('._anim-items');
+
+if(animItems.length>0){
+   window.addEventListener('scroll', animOnScroll);
+    
+   function animOnScroll (){
+       for(let index=0; index < animItems.length;index++){
+           const animItem = animItems[index];
+           const animItemHeight = animItem.offsetHeight;
+           const animItemOffset = offset(animItem).top;
+           const animStart = 4;
+           
+           let animItemPoint = window.innerHeight - animItemHeight / animStart;
+           if(animItemHeight > window.innerHeight){
+                animItemPoint = window.innerHeight - window.innerHeight / animStart;
+           }
+           
+           if((pageYOffset > animItemOffset - animItemPoint) && pageYOffset < (animItemOffset + animItemHeight)){
+              animItem.classList.add('_active');
+            }else{
+              if(!animItem.classList.contains('anim-no-hide')){
+                 animItem.classList.remove('_active');
+              }    
+              
+            }
+       }
+   }  
+   function offset(el){
+       const rect = el.getBoundingClientRect(),
+             scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
+             scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+       return { top:rect.top + scrollTop, left: rect.left + scrollLeft}
+   }  
+    
+   setTimeout(() => {
+       animOnScroll();
+   }, 500);
+   
+};
 const swipedfbdfr = new Swiper('.registr-swiper', {
    pagination: {
       el: '.registr-pagination',
@@ -244,7 +283,7 @@ const swipeoyhgr = new Swiper('.services-swiper', {
    breakpoints: {
       // when window width is >= 320px
       320: {
-         slidesPerView: 1.75,
+         slidesPerView: 1.55,
          spaceBetween: 20,
       },
       488: {
@@ -387,16 +426,51 @@ const swipdfgjher = new Swiper('.spons-swiper', {
 });
 
 if (window.innerWidth < 600) {
-   if ( document.querySelector(".tur__top-link")){
+   if (document.querySelector(".tur__top-link")) {
       document.querySelector(".tur__top-link").innerHTML = "Все";
    }
-   if ( document.querySelector(".tur__top-link-2")){
+   if (document.querySelector(".tur__top-link-2")) {
       document.querySelector(".tur__top-link-2").innerHTML = "Все";
    }
-   if ( document.querySelector(".tur__top-link-3")){
+   if (document.querySelector(".tur__top-link-3")) {
       document.querySelector(".tur__top-link-3").innerHTML = "Все";
    }
-   if ( document.querySelector(".tur__top-link-4")){
+   if (document.querySelector(".tur__top-link-4")) {
       document.querySelector(".tur__top-link-4").innerHTML = "Все";
    }
 };
+
+if (document.querySelectorAll('a[href*="#"]')) {
+   const smoothLinks = document.querySelectorAll('a[href^="#"]');
+   for (let smoothLink of smoothLinks) {
+      smoothLink.addEventListener('click', function (e) {
+         e.preventDefault();
+         const id = smoothLink.getAttribute('href');
+
+         document.querySelector(id).scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+         });
+      });
+   };
+};
+if (pageYOffset == 0){
+   document.querySelector('.swim').classList.add('hide');
+   document.querySelector('.header').classList.remove('hide');
+    document.querySelector('.header__mob').classList.remove('higher');
+ }else{
+    document.querySelector('.swim').classList.remove('hide');
+    document.querySelector('.header').classList.add('hide');
+    document.querySelector('.header__mob').classList.add('higher');
+ }
+window.addEventListener('scroll', function() {
+ if (pageYOffset == 0){
+   document.querySelector('.swim').classList.add('hide');
+   document.querySelector('.header').classList.remove('hide');
+    document.querySelector('.header__mob').classList.remove('higher');
+ }else{
+    document.querySelector('.swim').classList.remove('hide');
+    document.querySelector('.header').classList.add('hide');
+    document.querySelector('.header__mob').classList.add('higher');
+ }
+});
