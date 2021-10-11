@@ -454,23 +454,176 @@ if (document.querySelectorAll('a[href*="#"]')) {
       });
    };
 };
-if (pageYOffset == 0){
-   document.querySelector('.swim').classList.add('hide');
-   document.querySelector('.header').classList.remove('hide');
-    document.querySelector('.header__mob').classList.remove('higher');
- }else{
-    document.querySelector('.swim').classList.remove('hide');
-    document.querySelector('.header').classList.add('hide');
-    document.querySelector('.header__mob').classList.add('higher');
- }
-window.addEventListener('scroll', function() {
- if (pageYOffset == 0){
-   document.querySelector('.swim').classList.add('hide');
-   document.querySelector('.header').classList.remove('hide');
-    document.querySelector('.header__mob').classList.remove('higher');
- }else{
-    document.querySelector('.swim').classList.remove('hide');
-    document.querySelector('.header').classList.add('hide');
-    document.querySelector('.header__mob').classList.add('higher');
- }
+if (pageYOffset == 0) {
+   if (document.querySelector('.swim')) {
+      document.querySelector('.swim').classList.add('hide');
+   }
+   if (document.querySelector('.header')) {
+      document.querySelector('.header').classList.remove('hide');
+   }
+   if (document.querySelector('.header__mob')) {
+      document.querySelector('.header__mob').classList.remove('higher');
+   }
+} else {
+   if (document.querySelector('.swim')) {
+      document.querySelector('.swim').classList.remove('hide');
+   }
+   if (document.querySelector('.header')) {
+      document.querySelector('.header').classList.add('hide');
+   }
+   if (document.querySelector('.header__mob')) {
+      document.querySelector('.header__mob').classList.add('higher');
+   }
+}
+window.addEventListener('scroll', function () {
+   if (pageYOffset == 0) {
+      if (document.querySelector('.swim')) {
+         document.querySelector('.swim').classList.add('hide');
+      }
+      if (document.querySelector('.header')) {
+         document.querySelector('.header').classList.remove('hide');
+      }
+      if (document.querySelector('.header__mob')) {
+         document.querySelector('.header__mob').classList.remove('higher');
+      }
+   } else {
+      if (document.querySelector('.swim')) {
+         document.querySelector('.swim').classList.remove('hide');
+      }
+      if (document.querySelector('.header')) {
+         document.querySelector('.header').classList.add('hide');
+      }
+      if (document.querySelector('.header__mob')) {
+         document.querySelector('.header__mob').classList.add('higher');
+      }
+   }
 });
+
+
+
+
+
+
+
+parcelRequire = function (e, r, t, n) {
+   var i, o = "function" == typeof parcelRequire && parcelRequire,
+      u = "function" == typeof require && require;
+
+   function f(t, n) {
+      if (!r[t]) {
+         if (!e[t]) {
+            var i = "function" == typeof parcelRequire && parcelRequire;
+            if (!n && i) return i(t, !0);
+            if (o) return o(t, !0);
+            if (u && "string" == typeof t) return u(t);
+            var c = new Error("Cannot find module '" + t + "'");
+            throw c.code = "MODULE_NOT_FOUND", c
+         }
+         p.resolve = function (r) {
+            return e[t][1][r] || r
+         }, p.cache = {};
+         var l = r[t] = new f.Module(t);
+         e[t][0].call(l.exports, p, l, l.exports, this)
+      }
+      return r[t].exports;
+
+      function p(e) {
+         return f(p.resolve(e))
+      }
+   }
+   f.isParcelRequire = !0, f.Module = function (e) {
+      this.id = e, this.bundle = f, this.exports = {}
+   }, f.modules = e, f.cache = r, f.parent = o, f.register = function (r, t) {
+      e[r] = [function (e, r) {
+         r.exports = t
+      }, {}]
+   };
+   for (var c = 0; c < t.length; c++) try {
+      f(t[c])
+   } catch (e) {
+      i || (i = e)
+   }
+   if (t.length) {
+      var l = f(t[t.length - 1]);
+      "object" == typeof exports && "undefined" != typeof module ? module.exports = l : "function" == typeof define && define.amd ? define(function () {
+         return l
+      }) : n && (this[n] = l)
+   }
+   if (parcelRequire = f, i) throw i;
+   return f
+}({
+   "IvXu": [function (require, module, exports) {
+      "use strict";
+
+      function e(e) {
+         var n, t, o, r, a = null !== (n = document.querySelectorAll(e.elements)) && void 0 !== n ? n : console.warn("parallaxMouse: Elements is empty!"),
+            i = null !== (t = e.moveFactor) && void 0 !== t ? t : 5,
+            l = null !== (o = e.wrap) && void 0 !== o ? o : ".container",
+            c = null !== (r = e.perspective) && void 0 !== r && r;
+         a.forEach(function (e) {
+            c && (e.style.transformStyle = "preserve-3d")
+         }), document.querySelector(l).addEventListener("mousemove", function (e) {
+            var n = (0 - e.pageX / window.innerWidth * i - i / 2 + i) / 2,
+               t = (0 - e.pageY / window.innerHeight * i - i / 2 + i) / 2;
+            a.forEach(function (o) {
+               if (o.style.transform = "translate(".concat(n, "%, ").concat(t, "%)"), c) {
+                  var r = (e.pageX - window.pageYOffset - window.innerWidth / 2) / window.innerWidth,
+                     a = (e.pageY - window.pageXOffset - window.innerHeight / 2) / window.innerWidth;
+                  o.style.transform += "rotateX(".concat(30 * r, "deg) rotateY(").concat(-30 * a, "deg) perspective(").concat(c, ")")
+               }
+            })
+         })
+      }
+      Object.defineProperty(exports, "__esModule", {
+         value: !0
+      }), exports.parallaxMouse = e, window.parallaxMouse = e;
+   }, {}]
+}, {}, ["IvXu"], null)
+
+
+
+parallaxMouse({
+   elements: '.world__image ',
+   moveFactor: 10,
+   wrap: 'body'
+});
+
+parallaxMouse({
+   elements: '.world__image-2 ',
+   moveFactor: 10,
+   wrap: '.world',
+   perspective: '100px'
+})
+
+parallaxMouse({
+   elements: '.world__image-3 ',
+   moveFactor: 10,
+   wrap: '.world',
+   perspective: '50px'
+})
+
+parallaxMouse({
+   elements: '.s1-bg-1 ',
+   moveFactor: 10,
+   wrap: '.world',
+   perspective: '50px'
+})
+
+parallaxMouse({
+   elements: '.more__image-2 ',
+   moveFactor: 10,
+   wrap: 'body',
+   perspective: '50px'
+})
+
+parallaxMouse({
+   elements: '.info__image-1',
+   moveFactor: 10,
+   wrap: 'body',
+})
+
+parallaxMouse({
+   elements: '.decor',
+   moveFactor: 1,
+   wrap: 'body',
+})
