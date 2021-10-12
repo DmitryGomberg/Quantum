@@ -191,7 +191,7 @@ const swipedfbdfr = new Swiper('.registr-swiper', {
    breakpoints: {
       // when window width is >= 320px
       320: {
-         slidesPerView: 1.25,
+         slidesPerView: 1.15,
          spaceBetween: 20,
       },
       488: {
