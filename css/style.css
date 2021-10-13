@@ -1139,6 +1139,10 @@ body {
   bottom: -35px !important;
 }
 
+.proj-swiper {
+  padding-right: 20px;
+}
+
 .proj-pagination {
   position: absolute;
   width: 100%;
