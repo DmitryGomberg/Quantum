@@ -145,11 +145,10 @@ const da = new DynamicAdapt("max");
 da.init();;
 const animItems = document.querySelectorAll('._anim-items');
 
-       for(let index=0; index < animItems.length;index++){
-           
-              animItem.classList.add('_active');
-          
-       }
+for (let index = 0; index < animItems.length; index++) {
+   const animItem = animItems[index];
+   animItem.classList.add('_active')
+}
 const swipedfbdfr = new Swiper('.registr-swiper', {
    pagination: {
       el: '.registr-pagination',
